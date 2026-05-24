@@ -14,6 +14,7 @@
             --danger: #ef4444;
             --danger-dark: #dc2626;
             --warning: #f59e0b;
+            --warning-light: #fef3c7;
             --dark: #0f172a;
             --dark-light: #1e293b;
             --gray: #64748b;
@@ -45,7 +46,6 @@
             margin: 0 auto; 
         }
         
-        /* Header Modernizado */
         header { 
             background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
             color: white; 
@@ -89,7 +89,6 @@
             backdrop-filter: blur(4px);
         }
 
-        /* Sistema de Abas - Estrutura Original Mantida */
         .tabs-nav { 
             display: flex; 
             background: white; 
@@ -108,7 +107,7 @@
             background: white; 
             border: none; 
             font-weight: 600; 
-            font-size: clamp(0.8rem, 3vw, 0.9rem);
+            font-size: clamp(0.75rem, 2.5vw, 0.9rem);
             color: var(--gray); 
             cursor: pointer; 
             transition: all 0.25s ease;
@@ -116,7 +115,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
         }
         
         .tab-btn:hover { 
@@ -139,7 +138,6 @@
             display: block; 
         }
         
-        /* Cards Modernos */
         .card { 
             background: white; 
             padding: 24px; 
@@ -150,11 +148,6 @@
             border: 1px solid rgba(0,0,0,0.03);
         }
         
-        .card:hover {
-            box-shadow: var(--shadow-lg);
-        }
-        
-        /* Formulários */
         .form-group { 
             margin-bottom: 18px; 
         }
@@ -184,12 +177,6 @@
             box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
         }
         
-        textarea {
-            resize: vertical;
-            min-height: 70px;
-        }
-        
-        /* Botões */
         .btn { 
             background: var(--primary); 
             color: white; 
@@ -213,15 +200,12 @@
             box-shadow: var(--shadow);
         }
         
-        .btn-success { 
-            background: var(--success); 
-        }
+        .btn-success { background: var(--success); }
+        .btn-success:hover { background: var(--success-dark); }
+        .btn-warning { background: var(--warning); color: var(--dark); }
+        .btn-danger { background: var(--danger); color: white; }
+        .btn-danger:hover { background: var(--danger-dark); }
         
-        .btn-success:hover { 
-            background: var(--success-dark); 
-        }
-        
-        /* Lista de Veículos */
         .veiculo-item { 
             border-left: 4px solid var(--success); 
             padding: 16px; 
@@ -238,14 +222,14 @@
             transition: all 0.2s;
         }
         
-        .veiculo-item:hover {
-            transform: translateX(4px);
-            box-shadow: var(--shadow);
-        }
-        
         .veiculo-item.manutencao { 
             border-left-color: var(--danger);
             background: #fef2f2;
+        }
+
+        .veiculo-item.alerta-preventivo { 
+            border-left-color: var(--warning);
+            background: var(--warning-light);
         }
         
         .veiculo-info p { 
@@ -258,19 +242,24 @@
             font-size: 0.95rem; 
             color: var(--dark);
         }
+
+        .alerta-box-inline {
+            background: var(--warning-light);
+            border: 1px solid var(--warning);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 14px;
+            font-size: 0.85rem;
+            display: none;
+            color: #92400e;
+        }
         
-        /* Checklist Styles */
         .checklist-item { 
             background: var(--light); 
             padding: 16px; 
             border-radius: 12px; 
             margin-bottom: 14px; 
             border: 1px solid var(--border);
-            transition: all 0.2s;
-        }
-        
-        .checklist-item:hover {
-            border-color: var(--primary-light);
         }
         
         .status-options { 
@@ -290,7 +279,6 @@
             background: white;
             border-radius: 40px;
             border: 1px solid var(--border);
-            transition: all 0.2s;
         }
         
         .radio-label:has(input:checked) {
@@ -298,22 +286,10 @@
             border-color: var(--primary);
         }
         
-        .radio-label input {
-            width: auto;
-            margin: 0;
-        }
+        .radio-label input { width: auto; margin: 0; }
+        .justificativa-box { margin-top: 12px; display: none; }
+        .justificativa-box.active { display: block; animation: slideDown 0.2s ease; }
         
-        .justificativa-box { 
-            margin-top: 12px; 
-            display: none; 
-        }
-        
-        .justificativa-box.active { 
-            display: block;
-            animation: slideDown 0.2s ease;
-        }
-        
-        /* Relatório */
         #relatorio-saida { 
             display: none; 
             background: white; 
@@ -322,138 +298,30 @@
             border: 2px solid var(--primary-light);
             margin-top: 24px;
             box-shadow: var(--shadow-lg);
-            animation: fadeIn 0.3s ease;
         }
         
-        .relatorio-header { 
-            text-align: center; 
-            border-bottom: 2px dashed var(--border); 
-            padding-bottom: 16px; 
-            margin-bottom: 20px; 
-        }
+        .relatorio-header { text-align: center; border-bottom: 2px dashed var(--border); padding-bottom: 16px; margin-bottom: 20px; }
+        .item-relatorio { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); align-items: center; }
         
-        .item-relatorio { 
-            display: flex; 
-            justify-content: space-between; 
-            padding: 12px 0; 
-            border-bottom: 1px solid var(--border);
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        
-        .badge { 
-            padding: 4px 12px; 
-            border-radius: 20px; 
-            font-size: 0.7rem; 
-            font-weight: 700; 
-            color: white;
-            display: inline-block;
-        }
-        
+        .badge { padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: 700; color: white; display: inline-block; }
         .bg-ok { background: var(--success); }
         .bg-nc { background: var(--danger); }
+        .bg-pending { background: var(--warning); color: var(--dark); }
         
-        /* Animações */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        .historico-item { background: var(--light); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 12px; }
+        .historico-header { display: flex; justify-content: space-between; border-bottom: 1px solid var(--border); padding-bottom: 8px; margin-bottom: 8px; font-size: 0.85rem; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
         
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* Responsividade Mobile */
         @media (max-width: 768px) {
-            body {
-                padding: 12px;
-            }
-            
-            header {
-                flex-direction: column;
-                text-align: center;
-                padding: 16px 20px;
-            }
-            
-            .card {
-                padding: 18px;
-            }
-            
-            .tabs-nav {
-                flex-direction: row;
-                flex-wrap: wrap;
-            }
-            
-            .tab-btn {
-                padding: 12px 8px;
-                font-size: 0.75rem;
-            }
-            
-            .status-options {
-                gap: 12px;
-            }
-            
-            .radio-label {
-                padding: 4px 12px;
-                font-size: 0.8rem;
-            }
-            
-            .veiculo-item {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            h2 {
-                font-size: 1.1rem;
-            }
+            body { padding: 12px; }
+            header { flex-direction: column; text-align: center; padding: 16px 20px; }
+            .tabs-nav { flex-wrap: wrap; }
+            .tab-btn { padding: 12px 6px; font-size: 0.7rem; }
+            .veiculo-item { flex-direction: column; align-items: flex-start; }
         }
-        
-        @media (max-width: 480px) {
-            .status-options {
-                flex-direction: column;
-                gap: 8px;
-            }
-            
-            .radio-label {
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .item-relatorio {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .btn {
-                padding: 12px 16px;
-            }
-        }
-        
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: var(--border);
-            border-radius: 10px;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 10px;
-        }
-        
-        /* Empty State */
-        .empty-state {
-            text-align: center;
-            padding: 40px 20px;
-            color: var(--gray);
-            background: var(--light);
-            border-radius: 12px;
-        }
+        .empty-state { text-align: center; padding: 40px 20px; color: var(--gray); background: var(--light); border-radius: 12px; }
     </style>
 </head>
 <body>
@@ -465,8 +333,10 @@
     </header>
 
     <nav class="tabs-nav">
-        <button class="tab-btn active" onclick="mudarAba('aba-checklist')">📋 Realizar Checklist (Diário)</button>
-        <button class="tab-btn" onclick="mudarAba('aba-cadastro')">🚗 Cadastrar Veículo (Configuração)</button>
+        <button class="tab-btn active" onclick="mudarAba('aba-checklist')">📋 Checklist</button>
+        <button class="tab-btn" onclick="mudarAba('aba-cadastro')">🚗 Cadastrar</button>
+        <button class="tab-btn" onclick="mudarAba('aba-historico')">📜 Histórico</button>
+        <button class="tab-btn" onclick="mudarAba('aba-manutencao')">🔧 Manutenções</button>
     </nav>
 
     <div id="aba-checklist" class="tab-content active">
@@ -479,6 +349,8 @@
                         <option value="">-- Escolha um veículo --</option>
                     </select>
                 </div>
+
+                <div id="alerta-preventivo-check" class="alerta-box-inline"></div>
 
                 <div class="form-group id-km-check" style="display:none;">
                     <label>📟 Confirmar KM Atual do Veículo</label>
@@ -581,7 +453,6 @@
             
             <h3>📌 Itens Verificados:</h3>
             <div id="rel-itens"></div>
-
             <button onclick="window.print()" class="btn" style="margin-top:20px; background: var(--dark);">🖨️ Imprimir Relatório / Salvar PDF</button>
         </div>
     </div>
@@ -603,7 +474,7 @@
                     <input type="text" id="v-placa" placeholder="ABC-1234 ou ID da Bike" required>
                 </div>
                 <div class="form-group id-km">
-                    <label>KM Atual</label>
+                    <label>KM Inicial</label>
                     <input type="number" id="v-km" value="0">
                 </div>
                 <div class="form-group">
@@ -629,6 +500,33 @@
             <h2>🚚 Frota Cadastrada</h2>
             <div id="lista-veiculos">
                 <div class="empty-state">🚫 Nenhum veículo cadastrado ainda</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="aba-historico" class="tab-content">
+        <div class="card">
+            <h2>📜 Consultar Histórico de Inspeções</h2>
+            <div class="form-group">
+                <label>Filtrar por Veículo/Placa</label>
+                <select id="filtro-historico-veiculo">
+                    <option value="TODOS">-- Todos os Veículos --</option>
+                </select>
+            </div>
+            <div id="lista-historico">
+                <div class="empty-state">⏳ Carregando histórico...</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="aba-manutencao" class="tab-content">
+        <div class="card">
+            <h2>🔧 Veículos em Manutenção</h2>
+            <p style="color: var(--gray); font-size: 0.85rem; margin-bottom: 16px;">
+                Abaixo estão listados os veículos parados. Ao dar baixa, você poderá ajustar ou confirmar o KM exato do próximo serviço.
+            </p>
+            <div id="lista-manutencao">
+                <div class="empty-state">✅ Nenhum veículo em manutenção no momento!</div>
             </div>
         </div>
     </div>
@@ -658,12 +556,14 @@
     const db = getFirestore(app);
 
     let frota = [];
+    let historicoInspecoes = [];
+    const MARGEM_ALERTA_KM = 500; 
 
     window.mudarAba = function(idAba) {
         document.querySelectorAll('.tab-content').forEach(conteudo => conteudo.classList.remove('active'));
         document.querySelectorAll('.tab-btn').forEach(botao => botao.classList.remove('active'));
-        
         document.getElementById(idAba).classList.add('active');
+        
         const btnAtivo = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.getAttribute('onclick').includes(idAba));
         if (btnAtivo) btnAtivo.classList.add('active');
 
@@ -676,67 +576,128 @@
             frota.push({ id: docSnap.id, ...docSnap.data() });
         });
         atualizarInterface();
+        atualizarAbaManutencao();
+    });
+
+    onSnapshot(collection(db, "inspecoes"), (snapshot) => {
+        historicoInspecoes = [];
+        snapshot.forEach((docSnap) => {
+            historicoInspecoes.push({ id: docSnap.id, ...docSnap.data() });
+        });
+        historicoInspecoes.sort((a, b) => new Date(b.data) - new Date(a.data));
+        renderizarHistorico();
     });
 
     function atualizarInterface() {
         const listaDiv = document.getElementById('lista-veiculos');
         const selectCheck = document.getElementById('check-veiculo');
-        
+        const selectFiltroHistorico = document.getElementById('filtro-historico-veiculo');
+        const valorFiltroAtual = selectFiltroHistorico.value;
+
         if (frota.length === 0) {
-            listaDiv.innerHTML = '<div class="empty-state">🚫 Nenhum veículo cadastrado ainda. Cadastre um veículo acima!</div>';
+            listaDiv.innerHTML = '<div class="empty-state">🚫 Nenhum veículo cadastrado ainda.</div>';
         } else {
             listaDiv.innerHTML = '';
         }
         
         selectCheck.innerHTML = '<option value="">-- Escolha um veículo --</option>';
+        selectFiltroHistorico.innerHTML = '<option value="TODOS">-- Todos os Veículos --</option>';
 
         frota.forEach((v, index) => {
-            let txtManutencao = v.tipo !== 'Bicicleta' ? `<br>🔧 Próxima Manut. Prevista: ${Number(v.km) + Number(v.periodo)} KM (${v.tipoManutencao})` : '';
-            let kmLinha = v.tipo !== 'Bicicleta' ? `KM: ${v.km}` : 'Sem Odômetro';
+            let txtManutencao = '';
+            let classeAlerta = '';
+            let btnParadaPreventiva = '';
+
+            if (v.tipo !== 'Bicicleta') {
+                // Se houver uma meta fixa definida pelo gestor, usa ela, senão calcula matematicamente
+                const proximaManut = v.proximaManutMeta ? Number(v.proximaManutMeta) : (Number(v.kmInicialManut || 0) + Number(v.periodo || 5000));
+                const kmRestante = proximaManut - Number(v.km);
+                
+                txtManutencao = `<br>🔧 Próxima Manut. Alvo: <strong>${proximaManut} KM</strong> (${v.tipoManutencao}) | Faltam: <strong>${kmRestante} KM</strong>`;
+                
+                if (v.status === 'Ativo' && kmRestante <= MARGEM_ALERTA_KM) {
+                    classeAlerta = 'alerta-preventivo';
+                    txtManutencao += ` <span style="color:#b45309; font-weight:bold;">⚠️ PRÓXIMA!</span>`;
+                    btnParadaPreventiva = `
+                        <button class="btn btn-warning" style="padding:6px 10px; font-size:0.75rem; width:auto; margin-top:6px;" onclick="window.encaminharPreventiva('${v.id}')">
+                            🛑 Encostar p/ Preventiva
+                        </button>
+                    `;
+                }
+            }
+
+            let kmLinha = v.tipo !== 'Bicicleta' ? `KM Atual: ${v.km}` : 'Sem Odômetro';
+            let classeStatus = v.status === 'Manutenção' ? 'manutencao' : classeAlerta;
 
             listaDiv.innerHTML += `
-                <div class="veiculo-item ${v.status === 'Manutenção' ? 'manutencao' : ''}">
-                    <div class="veiculo-info">
+                <div class="veiculo-item ${classeStatus}">
+                    <div class="veiculo-info" style="flex: 1;">
                         <strong>${v.placa} [${v.tipo}]</strong>
                         <p>${kmLinha} | Status: <strong>${v.status}</strong>${txtManutencao}</p>
                     </div>
+                    <div>${btnParadaPreventiva}</div>
                 </div>
             `;
 
             selectCheck.innerHTML += `<option value="${index}">${v.placa} (${v.tipo})</option>`;
+            selectFiltroHistorico.innerHTML += `<option value="${v.placa}">${v.placa} (${v.tipo})</option>`;
         });
+
+        if([...selectFiltroHistorico.options].some(o => o.value === valorFiltroAtual)) {
+            selectFiltroHistorico.value = valorFiltroAtual;
+        }
     }
 
-    async function salvarVeiculo(e) {
-        e.preventDefault();
-        
-        const novoVeiculo = {
-            tipo: document.getElementById('v-tipo').value,
-            placa: document.getElementById('v-placa').value.toUpperCase(),
-            km: Number(document.getElementById('v-km').value) || 0,
-            status: document.getElementById('v-status').value,
-            periodo: Number(document.getElementById('v-PeriodoManutencao').value) || 0,
-            tipoManutencao: document.getElementById('v-tipoManutencao').value || 'Revisão Geral'
-        };
-
+    window.encaminharPreventiva = async function(idVeiculo) {
+        if(!confirm("Deseja alterar o status deste veículo para 'Manutenção' preventivamente?")) return;
         try {
-            await addDoc(collection(db, "veiculos"), novoVeiculo);
-            document.getElementById('form-veiculo').reset();
-            ajustarCamposTipo();
-            alert("✅ Veículo cadastrado com sucesso!");
-        } catch (error) {
-            console.error("Erro ao salvar: ", error);
-            alert("❌ Erro ao cadastrar veículo!");
+            await updateDoc(doc(db, "veiculos", idVeiculo), { status: 'Manutenção' });
+            alert("✅ Veículo enviado para a lista de manutenções com sucesso.");
+        } catch (e) {
+            alert("Erro ao alterar status.");
+        }
+    }
+
+    window.carregarDadosVeiculoChecklist = function() {
+        const idx = document.getElementById('check-veiculo').value;
+        const alertaBox = document.getElementById('alerta-preventivo-check');
+        
+        const campoKmCheck = document.querySelector('.id-km-check');
+        const camposMotorizados = document.querySelectorAll('.id-oleo-check, .id-motor-check, .id-portas-check, .id-doc-check');
+
+        if(idx === "") {
+            campoKmCheck.style.display = 'none';
+            alertaBox.style.display = 'none';
+            return;
+        }
+
+        const v = frota[idx];
+
+        if (v.tipo === 'Bicicleta') {
+            campoKmCheck.style.display = 'none';
+            alertaBox.style.display = 'none';
+            camposMotorizados.forEach(c => c.style.display = 'none');
+        } else {
+            campoKmCheck.style.display = 'block';
+            camposMotorizados.forEach(c => c.style.display = 'block');
+            document.getElementById('check-km-atual').value = v.km;
+
+            const proximaManut = v.proximaManutMeta ? Number(v.proximaManutMeta) : (Number(v.kmInicialManut || 0) + Number(v.periodo || 5000));
+            const kmRestante = proximaManut - Number(v.km);
+            
+            if(kmRestante <= MARGEM_ALERTA_KM) {
+                alertaBox.innerHTML = `⚠️ <strong>Alerta Preventivo:</strong> Faltam apenas <strong>${kmRestante} KM</strong> para a meta de manutenção revisional (${v.tipoManutencao}).`;
+                alertaBox.style.display = 'block';
+            } else {
+                alertaBox.style.display = 'none';
+            }
         }
     }
 
     async function gerarRelatorio(e) {
         e.preventDefault();
         const idx = document.getElementById('check-veiculo').value;
-        if(idx === "") {
-            alert("⚠️ Selecione um veículo primeiro!");
-            return;
-        }
+        if(idx === "") return;
         
         const v = frota[idx];
         let temDefeito = false;
@@ -754,17 +715,10 @@
 
         mapeamento.forEach(item => {
             if(v.tipo === 'Bicicleta' && item.ignorarSeBike) return;
-
             let statusVal = document.querySelector(`input[name="${item.id}"]:checked`).value;
             let justificativa = document.getElementById(`text-${item.id}`).value;
-
             if(statusVal === 'NC') temDefeito = true;
-
-            listaItensVerificados.push({
-                nome: item.nome,
-                status: statusVal,
-                motivo: statusVal === 'NC' ? justificativa : ''
-            });
+            listaItensVerificados.push({ nome: item.nome, status: statusVal, motivo: statusVal === 'NC' ? justificativa : '' });
         });
 
         let novoStatus = temDefeito ? 'Manutenção' : 'Ativo';
@@ -772,49 +726,36 @@
 
         if (v.tipo !== 'Bicicleta') {
             const kmAtual = Number(document.getElementById('check-km-atual').value);
-            if (!kmAtual && kmAtual !== 0) {
-                alert("⚠️ Por favor, informe o KM atual do veículo!");
+            if (isNaN(kmAtual) || kmAtual < v.km) {
+                alert(`⚠️ O KM informado não pode ser menor do que o KM anterior registrado (${v.km} KM)!`);
                 return;
             }
             dadosAtualizacaoVeiculo.km = kmAtual;
             v.km = kmAtual;
         }
-        v.status = novoStatus;
 
         try {
             await addDoc(collection(db, "inspecoes"), {
-                veiculoId: v.id,
-                placa: v.placa,
-                data: new Date().toISOString(),
-                itens: listaItensVerificados,
-                kmNaInspecao: v.tipo !== 'Bicicleta' ? v.km : 'N/A',
-                resultadoGeral: novoStatus
+                veiculoId: v.id, placa: v.placa, data: new Date().toISOString(),
+                itens: listaItensVerificados, kmNaInspecao: v.tipo !== 'Bicicleta' ? v.km : 'N/A', resultadoGeral: novoStatus
             });
-
-            const veiculoRef = doc(db, "veiculos", v.id);
-            await updateDoc(veiculoRef, dadosAtualizacaoVeiculo);
-
+            await updateDoc(doc(db, "veiculos", v.id), dadosAtualizacaoVeiculo);
         } catch (error) {
-            console.error("Erro na comunicação com Firebase: ", error);
             alert("❌ Erro ao salvar inspeção!");
         }
 
         document.getElementById('rel-data').innerText = new Date().toLocaleString('pt-BR');
         document.getElementById('rel-veiculo').innerText = `${v.placa} (${v.tipo})`;
-        
         if(v.tipo === 'Bicicleta') {
             document.getElementById('rel-km-linha').style.display = 'none';
         } else {
             document.getElementById('rel-km-linha').style.display = 'block';
             document.getElementById('rel-km').innerText = v.km + ' KM';
         }
-
-        const statusFinalSpan = document.getElementById('rel-status-final');
-        statusFinalSpan.innerHTML = `<span class="badge ${novoStatus === 'Manutenção' ? 'bg-nc' : 'bg-ok'}">${novoStatus.toUpperCase()}</span>`;
-
+        document.getElementById('rel-status-final').innerHTML = `<span class="badge ${novoStatus === 'Manutenção' ? 'bg-nc' : 'bg-ok'}">${novoStatus.toUpperCase()}</span>`;
+        
         const containerItens = document.getElementById('rel-itens');
         containerItens.innerHTML = '';
-        
         listaItensVerificados.forEach(item => {
             containerItens.innerHTML += `
                 <div class="item-relatorio">
@@ -823,80 +764,162 @@
                 </div>
             `;
         });
-
         document.getElementById('relatorio-saida').style.display = 'block';
         window.scrollTo({ top: document.getElementById('relatorio-saida').offsetTop, behavior: 'smooth' });
     }
 
-    window.ajustarCamposTipo = function() {
-        const tipo = document.getElementById('v-tipo').value;
-        const camposKm = document.querySelectorAll('.id-km');
-        camposKm.forEach(campo => {
-            campo.style.display = tipo === 'Bicicleta' ? 'none' : 'block';
-        });
-    }
+    function renderizarHistorico() {
+        const listaHistDiv = document.getElementById('lista-historico');
+        const filtroPlaca = document.getElementById('filtro-historico-veiculo').value;
+        const dadosFiltrados = historicoInspecoes.filter(insp => filtroPlaca === "TODOS" || insp.placa === filtroPlaca);
 
-    window.carregarDadosVeiculoChecklist = function() {
-        const idx = document.getElementById('check-veiculo').value;
-        
-        const campoKmCheck = document.querySelector('.id-km-check');
-        const campoOleoCheck = document.querySelector('.id-oleo-check');
-        const campoMotorCheck = document.querySelector('.id-motor-check');
-        const campoPortasCheck = document.querySelector('.id-portas-check');
-        const campoDocCheck = document.querySelector('.id-doc-check');
-
-        if(idx === "") {
-            campoKmCheck.style.display = 'none';
+        if(dadosFiltrados.length === 0) {
+            listaHistDiv.innerHTML = '<div class="empty-state">🚫 Nenhuma inspeção encontrada.</div>';
             return;
         }
 
-        const v = frota[idx];
+        listaHistDiv.innerHTML = '';
+        dadosFiltrados.forEach(insp => {
+            let dataFormatada = new Date(insp.data).toLocaleString('pt-BR');
+            let itensHtml = (insp.itens || []).map(item => `
+                <div style="font-size:0.8rem; margin-top:4px; display:flex; justify-content:space-between;">
+                    <span>• ${item.nome} ${item.motivo ? `<span style="color:var(--danger)">(${item.motivo})</span>` : ''}</span>
+                    <span style="font-weight:bold; color:${item.status === 'OK' ? 'var(--success)' : 'var(--danger)'}">${item.status}</span>
+                </div>
+            `).join('');
 
-        if (v.tipo === 'Bicicleta') {
-            campoKmCheck.style.display = 'none';
-            campoOleoCheck.style.display = 'none';
-            campoMotorCheck.style.display = 'none';
-            campoPortasCheck.style.display = 'none';
-            campoDocCheck.style.display = 'none';
-        } else {
-            campoKmCheck.style.display = 'block';
-            campoOleoCheck.style.display = 'block';
-            campoMotorCheck.style.display = 'block';
-            campoPortasCheck.style.display = 'block';
-            campoDocCheck.style.display = 'block';
-            document.getElementById('check-km-atual').value = v.km;
+            listaHistDiv.innerHTML += `
+                <div class="historico-item">
+                    <div class="historico-header"><strong>🚗 Placa: ${insp.placa}</strong><span>📅 ${dataFormatada}</span></div>
+                    <p style="font-size:0.85rem; margin-bottom: 6px;">
+                        <strong>Odômetro:</strong> ${insp.kmNaInspecao !== 'N/A' ? insp.kmNaInspecao + ' KM' : 'N/A'} | 
+                        <strong>Resultado:</strong> <span class="badge ${insp.resultadoGeral === 'Manutenção' ? 'bg-nc' : 'bg-ok'}">${insp.resultadoGeral.toUpperCase()}</span>
+                    </p>
+                    <div style="background:white; padding:8px; border-radius:8px; border:1px solid var(--border)">${itensHtml}</div>
+                </div>
+            `;
+        });
+    }
+
+    function atualizarAbaManutencao() {
+        const divManutencao = document.getElementById('lista-manutencao');
+        const veiculosParados = frota.filter(v => v.status === 'Manutenção');
+
+        if(veiculosParados.length === 0) {
+            divManutencao.innerHTML = '<div class="empty-state">✅ Nenhum veículo com manutenção pendente!</div>';
+            return;
         }
+
+        divManutencao.innerHTML = '';
+        veiculosParados.forEach(v => {
+            let detalheManut = v.tipo !== 'Bicicleta' ? `<p>KM Registrado: ${v.km} | Tipo: ${v.tipoManutencao}</p>` : '<p>Manutenção Geral Pendente</p>';
+            
+            divManutencao.innerHTML += `
+                <div class="veiculo-item manutencao" style="display:flex; justify-content:space-between; align-items:center;">
+                    <div class="veiculo-info">
+                        <strong>${v.placa} [${v.tipo}]</strong>
+                        ${detalheManut}
+                        <p><span class="badge bg-pending">Status: EM MANUTENÇÃO</span></p>
+                    </div>
+                    <div>
+                        <button class="btn btn-success" style="padding: 8px 14px; font-size:0.8rem; width:auto;" onclick="darOkManutencao('${v.id}', ${v.km}, ${v.periodo || 5000}, '${v.tipo}')">
+                            ⚙️ Dar OK / Concluído
+                        </button>
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+    // NOVA LÓGICA FLEXÍVEL: Permite reprogramar manualmente o KM exato do próximo serviço
+    window.darOkManutencao = async function(idVeiculo, kmAtualServico, intervaloPadrao, tipoVeiculo) {
+        let dadosUpdate = { status: 'Ativo' };
+
+        if (tipoVeiculo !== 'Bicicleta') {
+            // Calcula o padrão matematicamente como sugestão inicial
+            const sugestaoProximaManut = Number(kmAtualServico) + Number(intervaloPadrao);
+            
+            // Pergunta ao gestor e permite que ele digite o KM desejado diretamente
+            const inputGestor = prompt(
+                `A manutenção do veículo foi concluída com sucesso?\n\n` +
+                `Com base no KM atual (${kmAtualServico} KM), a próxima revisão está estimada para ${sugestaoProximaManut} KM.\n` +
+                `Se desejar alterar ou reprogramar o KM do próximo serviço, digite abaixo:`, 
+                sugestaoProximaManut
+            );
+
+            // Se o usuário clicar em "Cancelar", interrompe a liberação do veículo
+            if (inputGestor === null) return;
+
+            const proximoKmDefinido = Number(inputGestor);
+            if (isNaN(proximoKmDefinido) || proximoKmDefinido <= kmAtualServico) {
+                alert(`⚠️ Erro: O próximo KM de manutenção deve ser um número válido e maior do que o KM atual do serviço (${kmAtualServico} KM)!`);
+                return;
+            }
+
+            dadosUpdate.kmInicialManut = kmAtualServico;
+            dadosUpdate.proximaManutMeta = proximoKmDefinido; // Grava a meta manual diretamente no banco
+        } else {
+            if(!confirm("Confirmar a conclusão da manutenção geral da bicicleta?")) return;
+        }
+
+        try {
+            await updateDoc(doc(db, "veiculos", idVeiculo), dadosUpdate);
+            alert("✅ Status atualizado e próxima quilometragem salva com sucesso!");
+        } catch (error) {
+            alert("❌ Erro ao atualizar status no Firebase!");
+        }
+    }
+
+    async function salvarVeiculo(e) {
+        e.preventDefault();
+        const kmInicial = Number(document.getElementById('v-km').value) || 0;
+        const periodoManut = Number(document.getElementById('v-PeriodoManutencao').value) || 5000;
+        
+        const novoVeiculo = {
+            tipo: document.getElementById('v-tipo').value,
+            placa: document.getElementById('v-placa').value.toUpperCase(),
+            km: kmInicial,
+            kmInicialManut: kmInicial,
+            proximaManutMeta: kmInicial + periodoManut, // Define a meta inicial padrão
+            status: document.getElementById('v-status').value,
+            periodo: periodoManut,
+            tipoManutencao: document.getElementById('v-tipoManutencao').value || 'Revisão Geral'
+        };
+
+        try {
+            await addDoc(collection(db, "veiculos"), novoVeiculo);
+            document.getElementById('form-veiculo').reset();
+            window.ajustarCamposTipo();
+            alert("✅ Veículo cadastrado!");
+        } catch (error) {
+            alert("❌ Erro ao cadastrar!");
+        }
+    }
+
+    window.ajustarCamposTipo = function() {
+        const tipo = document.getElementById('v-tipo').value;
+        document.querySelectorAll('.id-km').forEach(c => c.style.display = tipo === 'Bicicleta' ? 'none' : 'block');
     }
 
     window.toggleJustificativa = function(campo, mostrar) {
         const box = document.getElementById(`just-${campo}`);
         const txt = document.getElementById(`text-${campo}`);
-        if(mostrar) {
-            box.classList.add('active');
-            txt.setAttribute('required', 'required');
-        } else {
-            box.classList.remove('active');
-            txt.removeAttribute('required');
-        }
+        if(mostrar) { box.classList.add('active'); txt.setAttribute('required', 'required'); }
+        else { box.classList.remove('active'); txt.removeAttribute('required'); }
     }
 
     document.getElementById('form-veiculo').addEventListener('submit', salvarVeiculo);
     document.getElementById('form-checklist').addEventListener('submit', gerarRelatorio);
     document.getElementById('v-tipo').addEventListener('change', window.ajustarCamposTipo);
     document.getElementById('check-veiculo').addEventListener('change', window.carregarDadosVeiculoChecklist);
+    document.getElementById('filtro-historico-veiculo').addEventListener('change', renderizarHistorico);
 
-    const camposMonit = ['pneu', 'eletrica', 'freio', 'oleo', 'motor', 'portas', 'doc'];
-    camposMonit.forEach(campo => {
-        const radOk = document.getElementById(`${campo}-ok`);
-        const radNc = document.getElementById(`${campo}-nc`);
-        if(radOk) radOk.addEventListener('click', () => window.toggleJustificativa(campo, false));
-        if(radNc) radNc.addEventListener('click', () => window.toggleJustificativa(campo, true));
+    ['pneu', 'eletrica', 'freio', 'oleo', 'motor', 'portas', 'doc'].forEach(campo => {
+        document.getElementById(`${campo}-ok`)?.addEventListener('click', () => window.toggleJustificativa(campo, false));
+        document.getElementById(`${campo}-nc`)?.addEventListener('click', () => window.toggleJustificativa(campo, true));
     });
 
-    setInterval(() => {
-        document.getElementById('relogio').innerText = new Date().toLocaleString('pt-BR');
-    }, 1000);
-
+    setInterval(() => { document.getElementById('relogio').innerText = new Date().toLocaleString('pt-BR'); }, 1000);
     window.ajustarCamposTipo();
 </script>
 </body>
